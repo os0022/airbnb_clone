@@ -25,6 +25,15 @@ gem 'jbuilder', '~> 2.5'
 
 gem "clearance"
 
+
+gem 'faker'
+
+gem 'kaminari'
+
+
+gem "omniauth"
+gem 'omniauth-google-oauth2'
+
 gem "figaro"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

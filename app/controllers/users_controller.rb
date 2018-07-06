@@ -1,8 +1,4 @@
 class UsersController < Clearance::UsersController
-	# def new
- #    	@user = user_from_params
- #    	render template: "users/new"
- #    end
 
 	def create
 		@user = user_from_params
@@ -34,7 +30,5 @@ class UsersController < Clearance::UsersController
     end
   	end
 
-  # def user_params
-  #   params[Clearance.configuration.user_parameter] || Hash.new
-  # end
+  
 end

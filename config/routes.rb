@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'listing/index'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -12,10 +13,16 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
 
   get 'welcome/index'
 
   root 'welcome#index'
+
+  get 'listings/index'
+  resources :listings, controller: "listings"
+
+  get '/listings/verify/:id' => 'listings#verify', as: "verify"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,53 @@
+<% if @listing.verification == true %>
+<h4>this list is verified </h4>
+<% end %>
+
+<p>
+  <strong>name:</strong>
+  <%= @listing.name %>
+</p>
+
+<p>
+  <strong>property type:</strong>
+  <%= @listing.property_type %>
+</p>
+
+<p>
+  <strong>country:</strong>
+  <%= @listing.country %>
+</p>
+<p>
+  <strong>city:</strong>
+  <%= @listing.country %>
+</p>
+ 
+<p>
+  <strong>number of rooms:</strong>
+  <%= @listing.room_number %>
+</p>
+ <p>
+  <strong>number of bathrooms:</strong>
+  <%= @listing.bathroom_number %>
+</p>
+<p>
+  <strong>street:</strong>
+  <%= @listing.street %>
+</p>
+ 
+<p>
+  <strong>area:</strong>
+  <%= @listing.area %>
+</p>
+<p>
+  <strong>price:</strong>
+  <%= @listing.price %>
+</p>
+<p>
+  <strong>guest:</strong>
+  <%= @listing.guest %>
+</p>
+<%= link_to 'Back', listings_path %>
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<% if current_user.access_level == "moderator" || current_user.access_level == "superadmin" && @listing.verification == false %>
+	<%= link_to 'verify', verify_path(@listing) %>
+	<% end %>

@@ -1,0 +1,60 @@
+<h1>Edit Listing</h1>
+
+<%= form_with(model: @listing, local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :property_type %><br>
+    <%= form.text_field :property_type %>
+  </p>
+
+  <p>
+    <%= form.label :country %><br>
+    <%= form.text_field :country %>
+  </p>
+ 
+  <p>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </p>
+  <p>
+    <%= form.label :number_of_rooms %><br>
+    <%= form.text_field :room_number %>
+  </p>
+ 
+  <p>
+    <%= form.label :number_of_bathrooms %><br>
+    <%= form.text_field :bathroom_number %>
+  </p>
+
+   <p>
+    <%= form.label :street %><br>
+    <%= form.text_field :street %>
+  </p>
+  <p>
+    <%= form.label :area %><br>
+    <%= form.text_field :area %>
+  </p>
+ 
+  <p>
+    <%= form.label :price %><br>
+    <%= form.text_field :price %>
+  </p>
+
+  <p>
+    <%= form.label :guest %><br>
+    <%= form.text_field :guest %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+   <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
+  <%= link_to 'Back', listings_path %>
+<% end %>
