@@ -48,6 +48,10 @@
     <%= form.label :guest %><br>
     <%= form.text_field :guest %>
   </p>
+
+  <p>
+    <%= form.file_field :avatars, multiple: true %>
+  </p>
  
   <p>
     <%= form.submit %>

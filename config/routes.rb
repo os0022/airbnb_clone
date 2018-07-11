@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
   get 'listing/index'
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -21,8 +22,19 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'listings/index'
-  resources :listings, controller: "listings"
-
+  resources :listings, controller: "listings" do
+    resources :reservations
+  end
+  resources :reservations, only:[:show]
   get '/listings/verify/:id' => 'listings#verify', as: "verify"
+
+  post 'braintree/checkout'
+
+  # get "/listings/:id/reservation" => "reservations#show", as: "reservation"
+  # post "/listings/:id/reservation" => "reservation#crceate", as: "post_reservation"
+
+  # resources :reservations, controller: "reservations" 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, controller: "users"
+  get '/users/:id' => "users#show"
 end

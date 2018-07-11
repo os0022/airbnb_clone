@@ -1,0 +1,38 @@
+<h1>Edit Profile</h1>
+
+<%= form_for @user, :html => {:multipart => true} do |form| %>
+  <p>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= form.label :username %><br>
+    <%= form.text_field :username %>
+  </p>
+ 
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :profile_picture %><br>
+    <%= form.file_field :profile_picture %>
+  </p>
+ 
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+   <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
+  <%= link_to 'Back', root_path %>
+<% end %>

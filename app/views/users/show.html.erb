@@ -1,0 +1,8 @@
+<br>
+<%= image_tag @user.profile_picture_url.to_s, :class => "profile" %>
+<%= @user.username %><br>
+<%= @user.first_name %> + 
+<%= @user.last_name %><br>
+<%= @user.email %><br>
+
+<%= link_to 'Edit', edit_user_path(@user) %>

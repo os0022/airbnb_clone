@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+ .profile {
+ 	width: 100px;
+ 	height: 100px;
+ 	display: block;
+ 	border-radius: 100%;
+ }
+
+ .listing {
+ 	display: inline-block;
+ 	width: 200px;
+ 	height: 200px;
+ }

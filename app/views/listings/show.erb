@@ -2,6 +2,13 @@
 <h4>this list is verified </h4>
 <% end %>
 
+
+<p>
+  <% @listing.avatars.each do |avatar| %>
+    <img class="listing" src="<%= avatar %>">
+  <% end %>
+</p>
+
 <p>
   <strong>name:</strong>
   <%= @listing.name %>

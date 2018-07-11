@@ -2,21 +2,21 @@
 <h1>All Listings</h1>
  
  
-  <% @listing.each do |listing| %>
+  <% @listing.order(updated_at: :desc).each do |listing| %>
     <div>
+      <% if listing.avatars != [] %>
+        <img class="listing" src="<%= listing.avatars[0] %>">
+        <% end %>
       <p><strong>city</strong>: <%= listing.city %> </p>
       <p><strong>number of guests</strong>: <%= listing.room_number %> </p>
       <p><strong>area</strong>: <%= listing.area %> </p>
       <p><strong>price</strong>: <%= listing.price %> </p>
+      <p></p>
 
-      <%= link_to 'Read more', listing_path(listing) %>|
+      <%= link_to 'Read more', listing_path(listing) %> |
       <%= link_to 'Edit', edit_listing_path(listing) %> |
-      <%= link_to 'Destroy', listing_path(listing),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>|
-              <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+      <%= link_to 'Destroy', listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to "Make a reservation", new_listing_reservation_path(listing) %>
       <hr>
     
 	</div>

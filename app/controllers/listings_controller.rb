@@ -5,6 +5,13 @@ class ListingsController < ApplicationController
   	@listing = Listing.page(params[:page]).per(10)
   end
 
+  def show
+    @listing = Listing.find(params[:id])
+  end
+
+  def new
+  end
+
   def edit
   	@listing = Listing.find(params[:id])
   	
@@ -22,14 +29,6 @@ class ListingsController < ApplicationController
 	    render 'edit'
 	  end
 	end
-  end
-
-  def show
-    @listing = Listing.find(params[:id])
-  end
-
-  def new
-
   end
 
   def destroy
@@ -66,7 +65,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:name, :property_type, :place_type, :country, :city,:room_number, :bathroom_number, :street, :area, :price, :guest)
+    params.require(:listing).permit(:name, :property_type, :place_type, :country, :city,:room_number, :bathroom_number, :street, :area, :price, :guest, {avatars: []})
   end 
 
 

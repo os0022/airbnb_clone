@@ -13,4 +13,33 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_tree
+
+$(function() {
+  
+  // Start date
+  $('input[name="reservation[start_date]"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    locale: {
+       format: 'YYYY/MM/DD'
+    },
+    minYear: 2017,
+    maxYear: 2022,
+    // isInvalidDate:
+  }, function(start) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD'));
+  });
+  
+  // End date
+  $('input[name="reservation[end_date]"]').daterangepicker({
+  	locale: {
+       format: 'YYYY/MM/DD'
+    },
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 2017,
+    maxYear: 2022,
+    // isInvalidDate: 
+  });
+});

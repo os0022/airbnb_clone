@@ -1,0 +1,15 @@
+<div class="container">
+    <h1><%= @listing.name %></h1>
+    <div>
+        <% @listing.avatars.each do |avatar| %>
+          <img class="listing" src="<%= avatar %>">
+        <% end %>
+    </div>
+    <%= form_with scope: :reservation, url: listing_reservations_path, local: true do |form| %>
+      <%= form.label :start_date %>
+      <input type="text" name="reservation[start_date]" value="" id="start_date"><br>
+      <%= form.label :end_date %>
+      <input type="text" name="reservation[end_date]" value="" id="end_date"><br>
+      <%= form.submit %>
+    <% end %>
+</div>

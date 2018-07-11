@@ -1,7 +1,7 @@
 class UsersController < Clearance::UsersController
 
 	def create
-		@user = user_from_params
+		@user = User.new(user_params)
 
     	if @user.save
       		sign_in @user
@@ -11,6 +11,28 @@ class UsersController < Clearance::UsersController
     end
 
 	end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if current_user.access_level == "customer" && @user.id != current_user.id
+      flash[:notice] = "This profile does not belong to you"
+      redirect_back fallback_location: @user
+    else
+      if @user.update(user_params) 
+        redirect_to @user 
+      else
+        render 'edit'
+      end
+    end
+  end
 
 	def user_from_params
     email = user_params.delete(:email)
@@ -29,6 +51,14 @@ class UsersController < Clearance::UsersController
 
     end
   	end
+
+  private
+  def user_params
+    params.fetch(:user).permit(:username, :first_name, :last_name, :email,:password, :profile_picture)
+  end 
+
+
+
 
   
 end

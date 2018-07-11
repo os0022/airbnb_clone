@@ -25,16 +25,19 @@ gem 'jbuilder', '~> 2.5'
 
 gem "clearance"
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 
 gem 'faker'
 
 gem 'kaminari'
 
-
 gem "omniauth"
 gem 'omniauth-google-oauth2'
 
 gem "figaro"
+gem "braintree"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
