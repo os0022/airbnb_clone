@@ -5,12 +5,15 @@
 
 
       <%= reservation.listing.name %>
+      
       <p><strong>check_in</strong>: <%= reservation.start_date %> </p>
       <p><strong>check_out</strong>: <%= reservation.end_date %> </p>
       <p><strong>the price</strong>: <%= reservation.total_price %> </p>
 
-      <%= link_to 'Edit', edit_listing_reservation_path(params[:listing_id], reservation) %> |
-      <%= link_to 'cancel reservation', listing_reservation_path(params[:listing_id], reservation), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <p>belongs to: <%= reservation.user.email %></p>
+
+      <%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation) %> |
+      <%= link_to 'cancel reservation', listing_reservation_path(reservation.listing.id, reservation), method: :delete, data: { confirm: 'Are you sure?' } %>
 
   
       <hr>

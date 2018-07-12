@@ -1,7 +1,6 @@
 class ReservationsController < ApplicationController
 
 	def index
-		@listing = Listing.find(params[:listing_id])
 		@reservation = Reservation.page(params[:page]).per(10)
 
 	end
@@ -38,6 +37,7 @@ class ReservationsController < ApplicationController
 
 	def edit 
 		@listing = Listing.find(params[:listing_id])
+		@reservation = Reservation.find(params[:id])
 
 	end
 

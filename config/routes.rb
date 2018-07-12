@@ -23,9 +23,9 @@ Rails.application.routes.draw do
 
   get 'listings/index'
   resources :listings, controller: "listings" do
-    resources :reservations
+    resources :reservations, except: :index
   end
-  resources :reservations, only:[:show]
+  resources :reservations, only:[:index]
   get '/listings/verify/:id' => 'listings#verify', as: "verify"
 
   post 'braintree/checkout'
