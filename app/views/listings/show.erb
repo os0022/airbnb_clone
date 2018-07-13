@@ -1,60 +1,73 @@
+<div class="container my-4 text-capitalize">
+
 <% if @listing.verification == true %>
-<h4>this list is verified </h4>
+  <h4>This listing is verified!</h4>
 <% end %>
 
+<div class="row">
+  <div class="col-md-12">
+    <% @listing.avatars.each do |avatar| %>
+     <img class="listing" src="<%= avatar %>">
+    <% end %>
+  </div>
 
-<p>
-  <% @listing.avatars.each do |avatar| %>
-    <img class="listing" src="<%= avatar %>">
-  <% end %>
-</p>
+  <div class="col-md-4 mt-3">
+    <h3 class="text-capitalize">Name:</h3>
+    <p class="lead"><%= @listing.name %></p>
+  </div>
 
-<p>
-  <strong>name:</strong>
-  <%= @listing.name %>
-</p>
+  <div class="col-md-4 mt-3">
+    <h3 class="text-capitalize">property type:</h3>
+    <p class="lead"><%= @listing.property_type %></p>
+  </div>
 
-<p>
-  <strong>property type:</strong>
-  <%= @listing.property_type %>
-</p>
+  <div class="col-md-4 mt-3">
+    <h3 class="text-capitalize">country:</h3>
+    <p class="lead"><%= @listing.country %></p>
+  </div>
 
-<p>
-  <strong>country:</strong>
-  <%= @listing.country %>
-</p>
-<p>
-  <strong>city:</strong>
-  <%= @listing.country %>
-</p>
- 
-<p>
-  <strong>number of rooms:</strong>
-  <%= @listing.room_number %>
-</p>
- <p>
-  <strong>number of bathrooms:</strong>
-  <%= @listing.bathroom_number %>
-</p>
-<p>
-  <strong>street:</strong>
-  <%= @listing.street %>
-</p>
- 
-<p>
-  <strong>area:</strong>
-  <%= @listing.area %>
-</p>
-<p>
-  <strong>price:</strong>
-  <%= @listing.price %>
-</p>
-<p>
-  <strong>guest:</strong>
-  <%= @listing.guest %>
-</p>
-<%= link_to 'Back', listings_path %>
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<% if current_user.access_level == "moderator" || current_user.access_level == "superadmin" && @listing.verification == false %>
-	<%= link_to 'verify', verify_path(@listing) %>
-	<% end %>
+  <div class="col-md-4">
+    <h3 class="text-capitalize">city:</h3>
+    <p class="lead"><%= @listing.country %></p>
+  </div>
+   
+  <div class="col-md-4">
+    <h3 class="text-capitalize">number of rooms:</h3>
+    <p class="lead"><%= @listing.room_number %></p>
+  </div>
+
+   <div class="col-md-4">
+    <h3 class="text-capitalize">number of bathrooms:</h3>
+    <p class="lead"><%= @listing.bathroom_number %></p>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="text-capitalize">street:</h3>
+    <p class="lead"><%= @listing.street %></p>
+  </div>
+   
+  <div class="col-md-4">
+    <h3 class="text-capitalize">area:</h3>
+    <p class="lead"><%= @listing.area %></p>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="text-capitalize">price:</h3>
+    <p class="lead"><%= @listing.price %></p>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="text-capitalize">guest:</h3>
+    <p class="lead"><%= @listing.guest %></p>
+  </div>
+</div>
+
+  <div class="col-md-4">
+    <%= link_to 'Back', listings_path %> |
+    <%= link_to 'Edit', edit_listing_path(@listing) %>
+    <% if current_user.access_level == "moderator" || current_user.access_level == "superadmin" && @listing.verification == false %>
+      <%= link_to 'verify', verify_path(@listing) %>
+    <% end %>
+  </div>
+
+</div>

@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   
 
   def index
-  	@listing = Listing.page(params[:page]).per(10)
+  	@listing = Listing.page(params[:page]).per(12)
   end
 
   def show

@@ -1,15 +1,15 @@
-<div class="container">
-    <h1><%= @listing.name %></h1>
+<div class="container my-3">
+    <h1 class="text-center"><%= @listing.name %></h1>
     <div>
         <% @listing.avatars.each do |avatar| %>
           <img class="listing" src="<%= avatar %>">
         <% end %>
     </div>
-    <div>
-    	<p><strong>check_in  :</strong><%= @reservation.start_date %> </p>
-    	<p><strong>check_out :</strong><%= @reservation.end_date %> </p>
-    	<p><strong>number of days :</strong><%= @reservation.num_of_days %> </p>
-    	<p><strong>the total price :</strong><%= @reservation.total_price %> </p>
-        <%= link_to "Make Payment", braintree_new_path %>
+    <div class="container text-center">
+    	<p><strong class="text-capitalize">check in: </strong><%= @reservation.start_date %> </p>
+    	<p><strong class="text-capitalize">check out: </strong><%= @reservation.end_date %> </p>
+    	<p><strong class="text-capitalize">number of days: </strong><%= @reservation.num_of_days %> </p>
+    	<p><strong class="text-capitalize">the total price: </strong><%= @reservation.total_price %> </p>
+        <%= button_to "Make Payment", braintree_new_path, :method => :get, :class => "btn btn-primary" %>
     </div>
 </div>

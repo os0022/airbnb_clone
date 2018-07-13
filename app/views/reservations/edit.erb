@@ -1,15 +1,17 @@
-<div class="container">
-    <h1><%= @listing.name %></h1>
-    <div>
-        <% @listing.avatars.each do |avatar| %>
-          <img class="listing" src="<%= avatar %>">
-        <% end %>
-    </div>
-    <%= form_with scope: :reservation, url: listing_reservation_path(params[:listing_id],@reservation),method: :patch, local: true do |form| %>
-      <%= form.label :start_date %>
-      <input type="text" name="reservation[start_date]" value="" id="start_date"><br>
-      <%= form.label :end_date %>
-      <input type="text" name="reservation[end_date]" value="" id="end_date"><br>
-      <%= form.submit %>
+<div class="container my-3">
+  <h1 class="text-center"><%= @listing.name %></h1>
+  
+  <div>
+    <% @listing.avatars.each do |avatar| %>
+      <img class="listing" src="<%= avatar %>">
     <% end %>
+  </div>
+
+  <%= form_with scope: :reservation, url: listing_reservation_path(params[:listing_id],@reservation),method: :patch, local: true do |form| %>
+    <h3><%= form.label :start_date %></h3>
+    <input type="text" name="reservation[start_date]" value="" id="start_date" class="form-control"><br>
+    <h3><%= form.label :end_date %></h3>
+    <input type="text" name="reservation[end_date]" value="" id="end_date" class="form-control"><br>
+    <%= form.submit :class => "btn btn-primary" %>
+  <% end %>
 </div>

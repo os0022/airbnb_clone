@@ -1,38 +1,37 @@
-<h1>Edit Profile</h1>
+<div class="form-group text-field container mt-3">
+  <h1 class="text-center">Edit Profile for <%= current_user.first_name + ' ' + current_user.last_name %></h1>
 
-<%= form_for @user, :html => {:multipart => true} do |form| %>
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
-  </p>
+  <%= form_for @user, :html => {:multipart => true} do |form| %>
+    <p>
+     <h3><%= form.label :first_name %>:</h3> 
+      <%= form.text_field :first_name, :class => "form-control" %>
+    </p>
 
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name %>
-  </p>
+    <p>
+      <h3><%= form.label :last_name %>:</h3>
+      <%= form.text_field :last_name, :class => "form-control" %>
+    </p>
 
-  <p>
-    <%= form.label :username %><br>
-    <%= form.text_field :username %>
-  </p>
- 
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
+    <p>
+      <h3><%= form.label :username %>:</h3>
+      <%= form.text_field :username, :class => "form-control" %>
+    </p>
+   
+    <p>
+      <h3><%= form.label :email %>:</h3>
+      <%= form.text_field :email, :class => "form-control" %>
+    </p>
 
-  <p>
-    <%= form.label :profile_picture %><br>
-    <%= form.file_field :profile_picture %>
-  </p>
- 
- 
-  <p>
-    <%= form.submit %>
-  </p>
-   <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+    <p>
+      <h3><%= form.label :profile_picture %>:</h3>
+      <%= form.file_field :profile_picture %>
+    </p>
 
-  <%= link_to 'Back', root_path %>
-<% end %>
+    <p>
+      <%= form.submit :class => "btn btn-primary my-4" %>
+    </p>
+  <% end %>
+
+  <%= link_to 'Back', user_path(current_user), :class => "btn btn-primary" %>
+</div>
+

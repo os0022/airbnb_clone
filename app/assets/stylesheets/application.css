@@ -14,11 +14,20 @@
  *= require_self
  */
 
+ .airbnb {
+ 	color: #000;
+ }
+
+ .airbnb:hover {
+ 	text-decoration: none;
+ 	color: #444;
+ }
+
  .profile {
- 	width: 100px;
- 	height: 100px;
  	display: block;
- 	border-radius: 100%;
+ 	max-width: 400px;
+ 	max-height: 400px;
+ 	margin: 0 auto;
  }
 
  .listing {
@@ -26,3 +35,91 @@
  	width: 200px;
  	height: 200px;
  }
+
+ .navbar {
+ 	z-index: 2;
+ }
+
+.card {
+	padding: 0;
+}
+
+.single-item {
+	width: 100%;
+	height: 50%;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://www.rosencentre.com/wp-content/themes/rosencentre/images/headerImage-rosenCentreHotel_2.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://www.hotel-lesamoyede.com/en/sites/default/files/imagecache/1920x1080/images/slides/2017-09-07-samoyede-terrasse-35_0.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://robbreportedit.files.wordpress.com/2016/06/mandapa-02.jpg?w=1024);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://www.mypremiumeurope.com/img/image_db/austria_luxury_hotels_main2-1920.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://www.mexicograndhotels.com/images/mexico-grand-hotels-cabo-san-lucas-exterior.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
