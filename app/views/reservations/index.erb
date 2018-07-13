@@ -1,24 +1,25 @@
- <div> 
-
-      
-    <% @reservation.each do |reservation| %>
-
-
-      <%= reservation.listing.name %>
-      
-      <p><strong>check_in</strong>: <%= reservation.start_date %> </p>
-      <p><strong>check_out</strong>: <%= reservation.end_date %> </p>
-      <p><strong>the price</strong>: <%= reservation.total_price %> </p>
-
-      <p>belongs to: <%= reservation.user.email %></p>
-
-      <%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation) %> |
-      <%= link_to 'cancel reservation', listing_reservation_path(reservation.listing.id, reservation), method: :delete, data: { confirm: 'Are you sure?' } %>
-
+<div class="container my-3">
+  <h1 class="text-center">All Reseervations</h1>
   
-      <hr>
-    
-	</div>
-  <% end %>
+  <div class="row">
+    <% @reservation.order(updated_at: :desc).each do |reservation| %>
+      <div class="card col-12 col-md-4" style="width: 18rem;">
+        <% if reservation.listing.avatars != [] %>
+          <img class="card-img-top listing" style="width: 100%" src="<%= reservation.listing.avatars[0] %>" alt="Card image cap">
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title text-capitalize"><%= reservation.listing.name %></h5>
+          <p class="card-text"><strong>Check In: </strong><span class="text-capitalize"><%= reservation.start_date %></span></p>
+          <p class="card-text"><strong>Check Out: </strong><span class="text-capitalize"><%= reservation.end_date %></span></p>
+          <p class="card-text"><strong>The Price: </strong><span class="text-capitalize"><%= reservation.total_price %></span></p>
+          <div class="text-capitalize">
+            <%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation), :class => "btn btn-warning btn-block" %>
+            <%= link_to 'Cancel Reservation',listing_reservation_path(reservation.listing.id, reservation), :class => "btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
   <%= paginate @reservation %>
+</div>

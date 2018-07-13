@@ -1,26 +1,27 @@
-
-<h1>All Listings</h1>
- 
- 
-  <% @listing.order(updated_at: :desc).each do |listing| %>
-    <div>
-      <% if listing.avatars != [] %>
-        <img class="listing" src="<%= listing.avatars[0] %>">
+<div class="container my-3">
+  <h1 class="text-center">All Listings</h1>
+  
+  <div class="row">
+    <% @listing.order(updated_at: :desc).each do |listing| %>
+      <div class="card col-12 col-md-4" style="width: 18rem;">
+        <% if listing.avatars != [] %>
+          <img class="card-img-top listing" style="width: 100%" src="<%= listing.avatars[0] %>" alt="Card image cap">
         <% end %>
-      <p><strong>city</strong>: <%= listing.city %> </p>
-      <p><strong>number of guests</strong>: <%= listing.room_number %> </p>
-      <p><strong>area</strong>: <%= listing.area %> </p>
-      <p><strong>price</strong>: <%= listing.price %> </p>
-      <p></p>
-
-      <%= link_to 'Read more', listing_path(listing) %> |
-      <%= link_to 'Edit', edit_listing_path(listing) %> |
-      <%= link_to 'Destroy', listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <%= link_to "Make a reservation", new_listing_reservation_path(listing) %>
-      <hr>
-    
-	</div>
-  <% end %>
+        <div class="card-body">
+          <h5 class="card-title text-capitalize"><%= listing.name %></h5>
+          <p class="card-text"><strong>City: </strong><span class="text-capitalize"><%= listing.city %></span></p>
+          <p class="card-text"><strong>Number of Rooms: </strong><span class="text-capitalize"><%= listing.room_number %></span></p>
+          <p class="card-text"><strong>Area: </strong><span class="text-capitalize"><%= listing.area %></span></p>
+          <div class="text-capitalize">
+            <%= link_to 'Read more', listing_path(listing), :class => "btn btn-primary btn-block" %>
+            <%= link_to 'Edit', edit_listing_path(listing), :class => "btn btn-warning btn-block" %>
+            <%= link_to 'Destroy', listing_path(listing), :class => "btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Make a reservation", new_listing_reservation_path(listing), :class => "btn btn-success btn-block" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
   <%= paginate @listing %>
-
+</div>

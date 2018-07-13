@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 
 	def index
-		@reservation = Reservation.page(params[:page]).per(10)
+		@reservation = Reservation.page(params[:page]).per(12)
 
 	end
 	
@@ -15,12 +15,17 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
+		@listing = Listing.find(params[:listing_id])
 		@reservation = Reservation.new(reservation_params)
 		@reservation.user_id = current_user.id
 		@reservation.listing_id = params[:listing_id]
 
 
 		if @reservation.save
+			#send a mail
+			#run a job
+			ReservationJob.perform_later(current_user.email, @listing.user.email, @reservation.id, @listing.id)
+			#ReservationMailer.booking_email(current_user.email, @listing.user.email, @reservation.id, @listing.id).deliver_now
 			redirect_to listing_reservation_path(params[:listing_id], @reservation)
 		else
 			flash[:notice] = "reservation date has been taken"
@@ -58,11 +63,11 @@ class ReservationsController < ApplicationController
 	def destroy
 	  @reservation = Reservation.find(params[:id])
 	  if current_user.access_level == "customer" && @reservation.user_id != current_user.id
-  	 	flash[:notice] = "this list is not yours"
+  	 	flash[:notice] = "this book is not yours"
   	 	redirect_back fallback_location: @reservation
   	  else
 	  	@reservation.destroy
-	  	redirect_to listing_reservations_path(params[:listing_id])
+	  	redirect_back fallback_location: @reservation
 	 end
   end
 
