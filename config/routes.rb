@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
   post 'braintree/checkout'
 
+  get "search" => "search#index"
+
+
   # get "/listings/:id/reservation" => "reservations#show", as: "reservation"
   # post "/listings/:id/reservation" => "reservation#crceate", as: "post_reservation"
 

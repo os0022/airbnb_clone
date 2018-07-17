@@ -1,26 +1,26 @@
 <div class="form-group text-field">
   <h3><%= form.label :first_name %>:</h3>
-  <%= form.text_field :first_name, :class => "form-control" %>
+  <%= form.text_field :first_name, :required => true, :class => "form-control" %>
 </div>
 
 <div class="form-group text-field">
   <h3><%= form.label :last_name %>:</h3>
-  <%= form.text_field :last_name, :class => "form-control" %>
+  <%= form.text_field :last_name, :required => true, :class => "form-control" %>
 </div>
 
 <div class="form-group text-field">
   <h3><%= form.label :username %>:</h3>
-  <%= form.text_field :username, :class => "form-control" %>
+  <%= form.text_field :username, :required => true, :class => "form-control" %>
 </div>
 
 <div class="form-group text-field">
-  <h3><%= form.label :email %>:</h3>
+  <h3><%= form.label :email %></h3>
   <%= form.text_field :email, type: 'email', :class => "form-control" %>
 </div>
 
 <div class="form-group password-field">
-  <h3><%= form.label :password %>:</h3>
-  <%= form.password_field :password, :class => "form-control" %>
+  <h3><%= form.label :password %></h3>
+  <%= form.password_field :password, :required => true, :class => "form-control" %>
 </div>
 
 

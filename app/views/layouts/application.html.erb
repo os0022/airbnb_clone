@@ -24,7 +24,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <!-- <a class="navbar-brand" href="#">Airbnb</a> -->
-      <%= link_to "Airbnb", root_path, :class => "lead airbnb" %>
+      <%= link_to "Airbnb", root_path, :class => "lead airbnb mr-2" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,6 +32,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <!-- Put something here if needed -->
+          <form action="/search" method="GET">
+           <input class="form-control mr-sm-2" type="text" placeholder="Search for City" aria-label="Search" name= "city">
+          </form>
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
@@ -72,6 +75,7 @@
   <!-- End of Flash messages -->
 
   <%= yield %>
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/validate-js/2.0.1/validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 </body>
 </html>

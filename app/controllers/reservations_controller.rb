@@ -3,6 +3,11 @@ class ReservationsController < ApplicationController
 	def index
 		@reservation = Reservation.page(params[:page]).per(12)
 
+		respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
+
 	end
 	
 	def new

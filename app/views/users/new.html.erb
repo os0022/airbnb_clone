@@ -1,7 +1,7 @@
 <div id="clearance" class="sign-up container mt-3">
   <h2 class="text-center"><%= t(".title") %></h2>
 
-  <%= form_for @user, :class => "" do |form| %>
+  <%= form_for @user, :id => "sign_up" do |form| %>
     <%= render partial: '/users/form', object: form %>
 
     <div class="submit-field">
