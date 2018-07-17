@@ -16,6 +16,79 @@
 
 $(function() {
   
+  $('#sign_up').validate({
+    rules: {
+      "user[first_name]": {
+        minlength: 2,
+        required: true
+      },
+      "user[last_name]": {
+        minlength: 2,
+        required: true
+      },
+      "user[username]": {
+        minlength: 2,
+        required: true
+      },
+      "user[email]": {
+        required: true,
+        email: true
+      },
+      "user[password]": {
+        minlength: 2,
+        required: true
+      }
+    },
+    messages: {
+      email: {
+        required: "Please enter an email address.",
+        email: "Please enter a vaild email address."
+      }
+    }
+  });
+
+  $('#city').on('keypress', function(e){
+    $.ajax({
+      url: 'search',
+      method: 'GET',
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function(data){
+        let checkCity = document.getElementById("checkCity");
+        // let city = document.getElementById("city");
+        checkCity.innerHTML = "";
+
+        data.forEach(function(listing){
+          const option = document.createElement("option");
+
+          option.value = listing.city;
+          checkCity.append(option);
+        })
+      }
+    })
+  });
+
+  $('#propertyType').on('keypress', function(e){
+    $.ajax({
+      url: 'search',
+      method: 'GET',
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function(data){
+        let checkProperty = document.getElementById("checkProperty");
+        // let city = document.getElementById("city");
+        checkProperty.innerHTML = "";
+
+        data.forEach(function(listing){
+          const option = document.createElement("option");
+
+          option.value = listing.property_type;
+          checkProperty.append(option);
+        })
+      }
+    })
+  });
+
   // Start date
   $('input[name="reservation[start_date]"]').daterangepicker({
     singleDatePicker: true,
@@ -41,4 +114,5 @@ $(function() {
     maxYear: 2022,
     // isInvalidDate: 
   });
+
 });

@@ -1,0 +1,23 @@
+<% @listing.each do |listing| %>
+	<div class="col-12">
+		<div class="col-md-12 mb-4">
+      <div class="card">
+        <% if listing.avatars != [] %>
+          <img class="card-img-top listing" style="width: 100%" src="<%= listing.avatars[0] %>" alt="Card image cap">
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title text-capitalize"><%= listing.name %></h5>
+          <p class="card-text"><strong>City: </strong><span class="text-capitalize"><%= listing.city %></span></p>
+          <p class="card-text"><strong>Number of Rooms: </strong><span class="text-capitalize"><%= listing.room_number %></span></p>
+          <p class="card-text"><strong>Property Type: </strong><span class="text-capitalize"><%= listing.property_type %></span></p>
+          <div class="text-capitalize">
+            <%= link_to 'Read more', listing_path(listing), :class => "btn btn-primary btn-block" %>
+            <%= link_to 'Edit', edit_listing_path(listing), :class => "btn btn-warning btn-block" %>
+            <%= link_to 'Destroy', listing_path(listing), :class => "btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Make a reservation", new_listing_reservation_path(listing), :class => "btn btn-success btn-block" %>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+<% end%>

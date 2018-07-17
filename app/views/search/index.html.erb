@@ -1,0 +1,61 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-6 my-2 py2">
+			
+			<form action="/search" method="GET">
+
+				<div class="my-2 py-2">
+					<label for="name"><h5>Name:</h5></label>
+					<input id="name" class="form-control mr-sm-2" type="text" placeholder="Name" aria-label="Search" name= "namesearch" list="checkNakme">
+				</div>
+
+				<div class="my-2 py-2">
+					<label for="city"><h5>City:</h5></label>
+					<input id="city" class="form-control mr-sm-2" type="text" placeholder="City" aria-label="Search" name= "city" value="<%= params[:city] %>" list="checkCity">
+					<datalist id="checkCity">
+					</datalist>
+				</div>
+
+				<div>
+					<label for="startPrice"><h5>Price:</h5></label>
+					<input id="startPrice" class="form-control mr-sm-2" type="text" placeholder="From" aria-label="Search" name= "from" >
+				</div>
+
+				<div>
+					<input id="limitPrice" class="form-control mr-sm-2 my-2" type="text" placeholder="To" aria-label="Search" name= "to">
+				</div>  
+
+				<div class="my-2 py-2">
+					<label for="propertyType"><h5>Property Type:</h5></label>
+					<input id="propertyType" class="form-control mr-sm-2" type="text" placeholder="Property Type" aria-label="Search" name= "property_type" list="checkProperty">
+					<datalist id="checkProperty">
+						
+					</datalist>
+				</div>
+
+				<div class="my-2 py-2">
+					<label for="numOfRoom"><h5>Number of Rooms:</h5></label>
+					<input id="numOfRoom" class="form-control mr-sm-2" type="text" placeholder="Number of Room" aria-label="Search" name= "room_number">
+				</div>
+
+				<div class="my-2 py-2">
+					<label for="numOfBathroom"><h5>Number of Bathrooms:</h5></label>
+					<input id="numOfBathroom" class="form-control mr-sm-2" type="text" placeholder="Number of Bathroom" aria-label="Search" name= "bathroom_number">
+				</div>
+			  
+			  <input type="submit" class="btn btn-primary">
+			</form>
+		</div>
+
+		<div id="listings" class="col-md-6 my-4">
+			<%= render 'listing' %>
+		</div>
+
+		<div id="paginator" class="container-fluid">
+				<%= paginate @listing, :remote => true %>
+		</div>
+		
+	</div>
+
+</div>

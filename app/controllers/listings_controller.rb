@@ -1,8 +1,12 @@
 class ListingsController < ApplicationController
-  
-
   def index
   	@listing = Listing.page(params[:page]).per(12)
+
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false, json: @listing }
+    end
+    
   end
 
   def show
@@ -61,13 +65,10 @@ class ListingsController < ApplicationController
   	redirect_to @listing
   end
 
-
-
   private
   def listing_params
     params.require(:listing).permit(:name, :property_type, :place_type, :country, :city,:room_number, :bathroom_number, :street, :area, :price, :guest, {avatars: []})
   end 
-
 
 end
 
