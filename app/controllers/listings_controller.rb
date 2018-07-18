@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
 
   def update
   	@listing = Listing.find(params[:id])
-  	if current_user.access_level == "customer" && @listing.user_id != current_user.id
+  	if current_user == nil || (current_user.access_level == "customer" && @listing.user_id != current_user.id)
   	 	flash[:notice] = "this list is not yours"
   	 	redirect_back fallback_location: @listing
   	else
@@ -37,8 +37,8 @@ class ListingsController < ApplicationController
 
   def destroy
 	  @listing = Listing.find(params[:id])
-	  if current_user.access_level == "customer" && @listing.user_id != current_user.id
-  	 	flash[:notice] = "this list is not yours"
+	  if current_user == nil || (current_user.access_level == "customer" && @listing.user_id != current_user.id)
+  	 	flash[:notice] = "This list is not yours"
   	 	redirect_back fallback_location: @listing
 
   	  else

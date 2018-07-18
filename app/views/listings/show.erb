@@ -65,8 +65,10 @@
   <div class="col-md-4">
     <%= link_to 'Back', listings_path %> |
     <%= link_to 'Edit', edit_listing_path(@listing) %>
-    <% if current_user.access_level == "moderator" || current_user.access_level == "superadmin" && @listing.verification == false %>
-      <%= link_to 'verify', verify_path(@listing) %>
+    <% if current_user != nil %>
+      <% if current_user.access_level == "moderator" || current_user.access_level == "superadmin" && @listing.verification == false %>
+        <%= link_to 'verify', verify_path(@listing) %>
+      <% end %>
     <% end %>
   </div>
 

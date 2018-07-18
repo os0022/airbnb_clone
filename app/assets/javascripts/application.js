@@ -15,37 +15,6 @@
 //= require_tree
 
 $(function() {
-  
-  $('#sign_up').validate({
-    rules: {
-      "user[first_name]": {
-        minlength: 2,
-        required: true
-      },
-      "user[last_name]": {
-        minlength: 2,
-        required: true
-      },
-      "user[username]": {
-        minlength: 2,
-        required: true
-      },
-      "user[email]": {
-        required: true,
-        email: true
-      },
-      "user[password]": {
-        minlength: 2,
-        required: true
-      }
-    },
-    messages: {
-      email: {
-        required: "Please enter an email address.",
-        email: "Please enter a vaild email address."
-      }
-    }
-  });
 
   $('#city').on('keypress', function(e){
     $.ajax({
