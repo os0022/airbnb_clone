@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem "clearance"
 
+gem "rails_12factor"
+
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
