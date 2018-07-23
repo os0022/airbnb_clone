@@ -39,10 +39,16 @@
         <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
           <li class="nav-item">
-            <p class="nav-link mb-0">You're signed in as a <%= current_user.access_level %></p>
+            <%= link_to "Reservations", reservations_path, :class => "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link mb-0">Signed in as a <%= current_user.access_level %></p>
           </li>
           <li class="nav-item">
             <%= link_to "Welcome back, " + current_user.first_name + " " + current_user.last_name, user_path(current_user), :class => "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Be a host", new_listing_path, :class => "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to 'Logout', sign_out_path, method: :delete, :class => 'nav-link' %>
