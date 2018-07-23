@@ -9,6 +9,7 @@
         <p class="card-text"><strong>City: </strong><span class="text-capitalize"><%= listing.city %></span></p>
         <p class="card-text"><strong>Number of Rooms: </strong><span class="text-capitalize"><%= listing.room_number %></span></p>
         <p class="card-text"><strong>Area: </strong><span class="text-capitalize"><%= listing.area %></span></p>
+        <p class="card-text"><strong>Belongs to: </strong><span class="text-capitalize"><%= listing.user.username %></span></p>
         <div class="text-capitalize">
           <%= link_to 'Read more', listing_path(listing), :class => "btn btn-primary btn-block" %>
           <%= link_to 'Edit', edit_listing_path(listing), :class => "btn btn-warning btn-block" %>

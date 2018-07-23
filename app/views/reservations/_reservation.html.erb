@@ -9,6 +9,7 @@
         <p class="card-text"><strong>Check In: </strong><span class="text-capitalize"><%= reservation.start_date %></span></p>
         <p class="card-text"><strong>Check Out: </strong><span class="text-capitalize"><%= reservation.end_date %></span></p>
         <p class="card-text"><strong>The Price: </strong><span class="text-capitalize"><%= reservation.total_price %></span></p>
+        <p class="card-text"><strong>Belongs to: </strong><span class="text-capitalize"><%= reservation.user.username %></span></p>
           <div class="text-capitalize">
             <%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation), :class => "btn btn-warning btn-block" %>
             <%= link_to 'Cancel Reservation',listing_reservation_path(reservation.listing.id, reservation), :class => "btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure?' } %>
